@@ -13,8 +13,10 @@ class MoviesController extends Controller
     public function index()
     {
         $movies = Movie::all();
-        return view('pages.movies',compact('movies'));
-    
+        $latestmovies = Movie::latest()
+            ->take(5)
+            ->get();
+        return view('pages.movies', compact('movies', 'latestmovies'));
     }
 
     /**
@@ -27,7 +29,7 @@ class MoviesController extends Controller
             'storyline' => 'required|string|min:10|max:5000',
             'director' => 'required|string',
             'genre' => 'required|string',
-            'created' => 'required|integer'
+            'created' => 'required|integer',
         ]);
 
         Movie::create($request->all());
@@ -41,9 +43,9 @@ class MoviesController extends Controller
     public function show(string $id)
     {
         $movie = Movie::findorfail($id);
+
         return view('pages.movie', compact('movie'));
     }
-    
 
     /**
      * Update the specified resource in storage.
@@ -62,7 +64,6 @@ class MoviesController extends Controller
     }
     public function addmovie()
     {
-       return view('pages.addmovie');
+        return view('pages.addmovie');
     }
-
 }

@@ -3,9 +3,9 @@
         <div class="col p-4 d-flex flex-column position-static">
             <strong class="d-inline-block mb-2 text-primary-emphasis">Movies</strong>
             <h3 class="mb-0">{{ $movie->title }}</h3>
-{{--             <div class="mb-1 text-body-secondary">Nov 12</div>
- --}}            <p class="card-text mb-auto">{{ $movie->director }}</p>
-            <a href="/movie/{{ $movie->id }}" class="icon-link gap-1 icon-link-hover stretched-link">
+            {{--             <div class="mb-1 text-body-secondary">Nov 12</div>
+ --}} <p class="card-text mb-auto">{{ $movie->director }}</p>
+            <a href="/movies/{{ $movie->id }}" class="icon-link gap-1 icon-link-hover stretched-link">
                 Open movie
                 <svg class="bi">
                     <use xlink:href="#chevron-right" />
